@@ -7,14 +7,17 @@
 {% block body %}
 <div class="content">
     <h1 style="text-align: center">To Do</h1>
+    {% if tasks|length < 1 %}
+    <h4>Add new tasks below.</h4>
 
+    {% else %}
     <table>
         <tr>
             <th>Task</th>
             <th>Added</th>
             <th>Actions</th>
         </tr>
-
+        
         <tr>
         {% for task in tasks %}
             <td>{{ task.content }}</td>
@@ -27,6 +30,7 @@
         </tr>
         {% endfor %}
     </table>
+    {% endif %}
 
     <form action="/" method="POST">
         <input type="text" name="content" id="content">
